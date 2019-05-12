@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zadanie 2</title>
+<style>
+.modal-bg{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity .5s;
+}
+
+.bg-active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal{
+    background-color: white;
+    width: 30%;
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    line-height: 3;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal__link{
+    color: gray;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.button{
+    padding: 10px 30px;
+    background-color: gray;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: dimgray;
+}
+
+.modal__link:hover{
+    color: dimgray;
+}
+
+</style>
+</head>
+<body>
+    <button class="button">Otwórz</button>
+
+    <div class="modal-bg">
+        <div class="modal">
+            <a href="3.html" class="modal__link" target="_blank">Zadanie 3</a>
+            <button class="button">Zamknij</button>
+        </div>
+    </div>
+
+<script>
+    const modalBtns = document.querySelectorAll(".button"),
+    modalBg = document.querySelector(".modal-bg");
+
+    for(let i = 0; i < modalBtns.length; i++){
+        modalBtns[i].addEventListener("click", function(){
+            modalBg.classList.toggle("bg-active");
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zadanie 3</title>
+<style>
+
+.myInput{
+    width: 40%;
+    padding: 12px 6px;
+    border: 1px solid gray;
+}
+
+.myBtn{
+    padding: 13px 50px;
+    background-color: gray;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.myBtn:hover{
+    background-color: dimgray;
+}
+
+.myTable{
+    width: 50%;
+    border: 1px solid gray;
+    font-size: 18px;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.myTable__data{
+    padding: 10px;
+    text-align: left;
+}
+
+.myTable__row{
+    border-bottom: 1px solid gray;
+}
+</style>
+</head>
+
+<body>
+    <input type="text" class="myInput" placeholder="Wpisz szukaną nazwę...">
+
+    <button class="myBtn">Wyszukaj</button>
+
+    <table class="myTable">
+        <tr class="myTable__row">
+            <td class="myTable__data">Walmart</td>
+        </tr>
+        <tr class="myTable__row">
+            <td class="myTable__data">State Grid</td>
+        </tr>
+        <tr class="myTable__row">
+            <td class="myTable__data">Sinopec Group</td>
+        </tr>
+        <tr class="myTable__row">
+            <td class="myTable__data">China National Petroleum</td>
+        </tr>
+        <tr class="myTable__row">
+            <td class="myTable__data">Royal Dutch Shell</td>
+        </tr>
+        <tr class="myTable__row">
+            <td class="myTable__data">Toyota Motor</td>
+        </tr>
+        <tr class="myTable__row">
+            <td class="myTable__data">Volkswagen</td>
+        </tr>
+        <tr class="myTable__row">
+            <td class="myTable__data">BP</td></tr>
+        <tr class="myTable__row">
+            <td class="myTable__data">Exxon Mobil</td>
+        </tr>
+        <tr class="myTable__row">
+            <td class="myTable__data">Berkshire Hathaway</td>
+        </tr>
+    </table>
+
+<script>
+    const btn = document.querySelector(".myBtn"),
+        input = document.querySelector(".myInput");
+
+    btn.addEventListener("click", myFunction);
+    input.addEventListener("keyup", function(event){
+
+        if(event.keyCode === 13){
+            myFunction();
+        }
+    });
+
+    function myFunction(){
+
+        const filter = input.value.toUpperCase(),
+            table = document.querySelector(".myTable"),
+            tableRows = document.querySelectorAll(".myTable__row");
+
+        for(let i = 0; i < tableRows.length; i++){
+            const tableDatas = tableRows[i].querySelectorAll(".myTable__data")[0];
+
+            if(tableDatas){
+                const txtValue = tableDatas.textContent || tableDatas.innerHTML;
+                if(txtValue.toUpperCase().indexOf(filter) > -1){
+                    tableRows[i].style.display = "";
+                } else{
+                    tableRows[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
