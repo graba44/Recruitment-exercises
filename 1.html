@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Zadanie 1</title>
+    <link rel="stylesheet" href="style1.css">
 <style>
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: white;
 }
 
 .container{
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 100px auto 100px;
+    grid-gap: 15px;
 }
 
 .header{
@@ -25,27 +27,19 @@
     background-color: #1a1c22;
 }
 
-.wrapper{
+.main{
     min-height: 400px;
-    height: 100%;
-    margin: 15px 0 15px 0;
+    display: grid;
+    grid-template-rows: 50% auto;
+    grid-gap: 15px;
 }
 
 .sidebar{
-    height: 50%;
-    background-color: #6C757D;
-}
-
-.panels{
-    height: 50%;
-    display: flex;
-    flex-direction: column;
+    background-color: #6c757d;
 }
 
 .content{
     background-color: #343a40;
-    margin: 15px 0 0 0;
-    flex: 1;
 }
 
 .footer{
@@ -54,93 +48,63 @@
     background-color: #1a1c22;
 }
 
-@media screen and (min-width: 600px) and (max-width: 899px){
-    .panels{
-        display: grid;
-        grid-template-columns: 50% 50%;
-        grid-template-rows: 33.33% 33.33% 33.33%;
-        grid-column-gap: 15px;
-        overflow: hidden;
-    }
-}
-
 @media screen and (min-width: 900px){
     .sidebar{
         width: 400px;
     }
+}
 
-    .panels{
-        width: 100%;
+@media screen and (min-width: 600px) and (max-width: 899px){
+    .sidebar{
+        grid-column: span 2;
     }
 }
 
 @media screen and (min-width: 900px) and (max-width: 1199px){
-    .wrapper{
-        display: flex;
+    .main{
+        grid-template-columns: 400px auto auto;
+        grid-template-rows: 1fr 1fr 1fr;
     }
 
-    .sidebar, .panels{
-        height: 100%;
-    }
-
-    .panels{
-        display: grid;
-        grid-template-columns: 50% 50%;
-        grid-template-rows: 33.33% 33.33% 33.33%;
-        overflow: hidden;
-        grid-gap: 15px;
-        margin-left: 15px;
-    }
-
-    .content{
-        margin: 0;
+    .sidebar{
+        grid-row: span 3;
     }
 }
 
 @media screen and (min-width: 1200px){
-    .wrapper{
-        display: flex;
+    .main{
+        grid-template-columns: 400px auto auto auto;
+        grid-template-rows: 1fr 1fr;
     }
 
-    .sidebar, .panels{
-        height: 100%;
-    }
-
-    .panels{
-        display: grid;
-        grid-template-columns: 33.33% 33.33% 33.33%;
-        grid-template-rows: 50% 50%;
-        overflow: hidden;
-        grid-gap: 15px;
-        margin-left: 15px;
-    }
-
-    .content{
-        margin: 0;
+    .sidebar{
+        grid-row: span 2;
     }
 }
-
 </style>
 </head>
 
 <body>
+
     <div class="container">
+
         <header class="header"></header>
 
-        <section class="wrapper">
+        <main class="main">
+
             <aside class="sidebar"></aside>
 
-            <section class="panels">
-                <div class="content"></div>
-                <div class="content"></div>
-                <div class="content"></div>
-                <div class="content"></div>
-                <div class="content"></div>
-                <div class="content"></div>
-            </section>
-        </section>
+            <div class="content"></div>
+            <div class="content"></div>
+            <div class="content"></div>
+            <div class="content"></div>
+            <div class="content"></div>
+            <div class="content"></div>
+
+        </main>
 
         <footer class="footer"></footer>
+
     </div>
 </body>
 </html
