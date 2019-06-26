@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo Application</title>
+    <style>
+        body{
+            background-color: #3d3d3d;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .wrapper{
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .btn{
+            margin: 2rem 1rem;
+            padding: 1rem 1.5rem;
+            min-width: 150px;
+            font-size: 18px;
+            font-weight: 700;
+            background-color: #9f9f9f;
+            cursor: pointer;
+            text-transform: uppercase;
+            border: 0;
+        }
+
+        .btn:hover{
+            background-color: #7d7d7d;
+            color: #fff;
+        }
+
+        .list{
+            list-style: none;
+        }
+
+        .list > li{
+            margin: .5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+
+        <button type="button" class="btn" name="add">Add</button>
+        <button type="button" class="btn" name="remove">Remove</button>
+        <button type="button" class="btn" name="clear">Clear</button>
+
+        <ul class="list"></ul>
+
+    </div>
+
+<script>
+        const addBtn = document.querySelector(".btn[name='add']");
+        const removeBtn = document.querySelector(".btn[name='remove']");
+        const clearBtn = document.querySelector(".btn[name='clear']");
+        const list = document.querySelector(".list");
+        let number = 1;
+
+        addBtn.addEventListener("click", () => {
+            const li = document.createElement("li");
+            const liText = document.createTextNode("Task number " + number);
+            li.appendChild(liText);
+            list.appendChild(li);
+            number++;
+        });
+
+        removeBtn.addEventListener("click", () => {
+            if(list.hasChildNodes()){
+                list.removeChild(list.lastChild);
+                number --;
+            }
+        });
+
+        clearBtn.addEventListener("click", () => {
+            while(list.hasChildNodes()){
+                list.removeChild(list.lastChild);
+                number = 1;
+            }
+        });
+
+</script>
+
+</body>
+</html>
